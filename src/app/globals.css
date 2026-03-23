@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal: #0a0a0b;
+  --color-chili: #e31c25;
+  --color-pandan: #4ade80;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Vidaloka", serif;
+}
+
+:root {
+  --background: #0a0a0b;
+  --foreground: #ffffff;
+}
+
+/* Glassmorphism utility */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Custom lowercase tracking */
+.tracking-fiesta {
+  letter-spacing: -0.05em;
+}
+
+@keyframes loop-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-loop-scroll {
+  animation: loop-scroll 30s linear infinite;
+}
