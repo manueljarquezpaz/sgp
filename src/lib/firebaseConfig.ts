@@ -3,13 +3,14 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyDFu5rwUwvO4ZwhHgQMO26T-mTZQE4kitg",
-  authDomain: "avidrealto.firebaseapp.com",
-  databaseURL: "https://avidrealto-default-rtdb.firebaseio.com",
-  projectId: "avidrealto",
-  storageBucket: "avidrealto.firebasestorage.app",
-  messagingSenderId: "700594004205",
-  appId: "1:700594004205:web:6d82bb4b895b54ba856ce4",
+  apiKey: "AIzaSyAM1vRKMoq3nrIN8Mk26zk5SBh1CuHyjbo",
+  authDomain: "asiarabstarz.firebaseapp.com",
+  databaseURL: "https://asiarabstarz-default-rtdb.firebaseio.com",
+  projectId: "asiarabstarz",
+  storageBucket: "asiarabstarz.firebasestorage.app",
+  messagingSenderId: "852448790687",
+  appId: "1:852448790687:web:2c08137a0f2d5adb26baaa",
+  measurementId: "G-0S0784LNNH"
 };
 
 // Safe initialization (Prevents "Firebase App already exists" error)
