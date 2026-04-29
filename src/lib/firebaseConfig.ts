@@ -18,3 +18,4 @@ const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
 // Export services
 export const auth = getAuth(app);
 export const db = getDatabase(app);
+
