@@ -3,14 +3,13 @@ import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyAM1vRKMoq3nrIN8Mk26zk5SBh1CuHyjbo",
-  authDomain: "asiarabstarz.firebaseapp.com",
-  databaseURL: "https://asiarabstarz-default-rtdb.firebaseio.com",
-  projectId: "asiarabstarz",
-  storageBucket: "asiarabstarz.firebasestorage.app",
-  messagingSenderId: "852448790687",
-  appId: "1:852448790687:web:2c08137a0f2d5adb26baaa",
-  measurementId: "G-0S0784LNNH"
+  apiKey: "AIzaSyBVAlrgIhpZNRbf5qHteeDrrVY_SJ6QaTI",
+  authDomain: "arabnowvote.firebaseapp.com",
+  databaseURL: "https://arabnowvote-default-rtdb.firebaseio.com",
+  projectId: "arabnowvote",
+  storageBucket: "arabnowvote.firebasestorage.app",
+  messagingSenderId: "928685991387",
+  appId: "1:928685991387:web:6b93b9ba8e77fd5affb3fe"
 };
 
 // Safe initialization (Prevents "Firebase App already exists" error)
